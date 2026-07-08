@@ -1,15 +1,11 @@
 import React, { useState, useMemo, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase as sb, useLive } from "./supabaseClient";
 
 /* ---- Config from environment variables ---- */
-const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
-const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
 const PAYSTACK_PUBLIC_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY;
 const WHATSAPP = "233597414760"; // 0597414760 in international format
 const LOW_STOCK = 5;
 
-const useLive = !!SUPABASE_URL && !!SUPABASE_ANON_KEY;
-const sb = useLive ? createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 const paystackReady = !!PAYSTACK_PUBLIC_KEY;
 
 const SAMPLE = [
